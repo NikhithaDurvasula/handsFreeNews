@@ -1,0 +1,5 @@
+<root>
+  <item name='android.os.PowerManager SCREEN_DIM_WAKE_LOCK'>
+    <annotation name='android.support.annotation.NonNull' />
+  </item>
+</root>

@@ -46,6 +46,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/Technology"
         android:layout_alignParentBottom="true"/>
+    <TextView
+        android:id="@+id/responseText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/Technology"
+        android:textSize="35dp" />
 
     <TextView
         android:text="TextView"
