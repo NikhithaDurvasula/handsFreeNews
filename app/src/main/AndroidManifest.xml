@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Business" />
+        <activity android:name=".General" />
+        <activity android:name=".Sports" />
+        <activity android:name=".Technology"></activity>
     </application>
 
 </manifest>
