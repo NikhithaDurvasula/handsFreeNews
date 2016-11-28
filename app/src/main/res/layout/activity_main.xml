@@ -13,28 +13,33 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Business"
-        android:text="Business" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/General"
-        android:layout_below="@+id/Business"
-        android:text="General" />
+        android:text="General"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Business" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Sports"
-        android:layout_below="@+id/General"
-        android:text="Sports" />
+        android:id="@+id/Business"
+        android:text="Business"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Technology"
+        android:text="Technology"
         android:layout_below="@+id/Sports"
-        android:text="Technology" />
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Sports"
+        android:text="Sports"
+        android:layout_below="@+id/General"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

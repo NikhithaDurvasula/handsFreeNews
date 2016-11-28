@@ -48,6 +48,8 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
     public int MY_DATA_CHECK_CODE = 0;
     public TextToSpeech myTTS;
     public boolean voicemode;
+    public boolean read_description = false;
+    public boolean next = false;
 
     private static final String TAG = MainActivity.class.getName();
     protected PowerManager.WakeLock mWakeLock;
@@ -56,7 +58,7 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
     TextView responseText;
     Intent mSpeechIntent;
     boolean killCommanded = false;
-    private static final String[] VALID_COMMANDS = {"stop", "change", "exit"};
+    private static final String[] VALID_COMMANDS = {"stop", "change", "description", "next", "exit"};
     private static final int VALID_COMMANDS_SIZE = VALID_COMMANDS.length;
 
     @Override
@@ -111,6 +113,14 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
                 Intent intent1 = new Intent(Business.this,MainActivity.class);
                 startActivity(intent1);
                 finish();
+                break;
+
+            case 2:
+                read_description = true;
+                break;
+
+            case 3:
+                next = true;
                 break;
 
             default:
@@ -220,7 +230,6 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
         }
     }
 
-
     private void businessEngine()
     {
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -240,6 +249,8 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
                             for (int i = 0; i < articles.length(); i++)
                             {
                                 JSONObject temp = articles.getJSONObject(i);
+                                if(next)
+                                    i++;
                                 String author = temp.getString("author");
                                 String title = temp.getString("title");
                                 String description = temp.getString("description");
@@ -249,6 +260,8 @@ public class Business extends AppCompatActivity implements TextToSpeech.OnInitLi
                                 newsFeed.add(new newsItem(author, title, description, url, urlToImage, publishedAt));
                                 speakWords(title);
                                 myTTS.playSilentUtterance(1000,TextToSpeech.QUEUE_ADD , null);
+                                if(read_description)
+                                    speakWords(description);
                             }
                         }
                         catch(JSONException e)

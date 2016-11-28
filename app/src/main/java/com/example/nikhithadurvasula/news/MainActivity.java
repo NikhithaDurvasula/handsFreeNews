@@ -267,11 +267,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             }
         }
     }
-    public void onClick(View V)
-    {
-        String words = "Welcome to the application.Please select the category you need";
-        speakWords(words);
-    }
+
     private void speakWords(String speech)
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)

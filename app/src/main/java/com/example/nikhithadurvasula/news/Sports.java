@@ -48,6 +48,8 @@ public class Sports extends AppCompatActivity implements TextToSpeech.OnInitList
     public int MY_DATA_CHECK_CODE = 0;
     public TextToSpeech myTTS;
     public boolean voicemode;
+    public boolean read_description = true;
+    public boolean next = false;
 
     private static final String TAG = MainActivity.class.getName();
     protected PowerManager.WakeLock mWakeLock;
@@ -56,7 +58,7 @@ public class Sports extends AppCompatActivity implements TextToSpeech.OnInitList
     TextView responseText;
     Intent mSpeechIntent;
     boolean killCommanded = false;
-    private static final String[] VALID_COMMANDS = {"stop", "change", "exit"};
+    private static final String[] VALID_COMMANDS = {"stop", "change", "description", "exit"};
     private static final int VALID_COMMANDS_SIZE = VALID_COMMANDS.length;
 
     @Override
@@ -111,6 +113,14 @@ public class Sports extends AppCompatActivity implements TextToSpeech.OnInitList
                 Intent intent1 = new Intent(Sports.this,MainActivity.class);
                 startActivity(intent1);
                 finish();
+                break;
+
+            case 2:
+                read_description = true;
+                break;
+
+            case 3:
+                next = true;
                 break;
 
             default:
@@ -238,6 +248,8 @@ public class Sports extends AppCompatActivity implements TextToSpeech.OnInitList
                             for (int i = 0; i < articles.length(); i++)
                             {
                                 JSONObject temp = articles.getJSONObject(i);
+                                if(next)
+                                    i++;
                                 String author = temp.getString("author");
                                 String title = temp.getString("title");
                                 String description = temp.getString("description");
